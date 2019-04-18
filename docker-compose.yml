@@ -1,0 +1,13 @@
+version: '3'
+services:
+  resque-worker:
+    image: 252435934004.dkr.ecr.sa-east-1.amazonaws.com/neoassist/neopack/resque_tag
+    restart: always
+    env_file:
+      - neocfg-connections.env
+      - neocfg-php.env
+      - neocfg-resque.env
+    entrypoint:
+      - /bin/bash
+      - /entrypoint.sh
+      - /var/www/phpServices/Jobs/resquestart.php
